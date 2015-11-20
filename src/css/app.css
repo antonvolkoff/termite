@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #202A33;
+  color: #fafafa;
+
+  font-family: 'Source Code Pro', monospace;
+}
+
+.element {
+  padding: 5px;
+}
+
+.element-stdin {
+  background: #303E4C;
+}
+
+.element-stdin textarea {
+  border: none;
+  outline: none;
+  width: 100%;
+  resize: none;
+
+  background: #303E4C;
+  color: #fafafa;
+
+  font-family: 'Source Code Pro', monospace;
+  font-size: inherit;
+}
+
+.element-stdout {
+}
