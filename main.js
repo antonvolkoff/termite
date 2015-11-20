@@ -1,5 +1,7 @@
-const electron = require('electron');
-const app = electron.app;  // Module to control application life.
+const exec          = require('child_process').exec;
+const electron      = require('electron');
+const ipcMain       = electron.ipcMain;
+const app           = electron.app;  // Module to control application life.
 const BrowserWindow = electron.BrowserWindow;  // Module to create native browser window.
 
 // Report crashes to our server.
@@ -36,5 +38,17 @@ app.on('ready', function() {
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     mainWindow = null;
+  });
+
+  ipcMain.on("exec", function(event, arg) {
+    exec(arg, function(error, stdout, stderr) {
+        event.returnValue = {stdout: stdout, stderr: stderr, error: error};
+
+        console.log('stdout: ' + stdout);
+        console.log('stderr: ' + stderr);
+        if (error !== null) {
+           console.log('exec error: ' + error);
+        }
+    });
   });
 });

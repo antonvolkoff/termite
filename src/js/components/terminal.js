@@ -9,6 +9,20 @@ class Terminal extends React.Component {
   constructor() {
     super();
     this.state = TerminalStore.getState();
+
+    this.onChange = this.onChange.bind(this);
+  }
+
+  componentDidMount() {
+    TerminalStore.listen(this.onChange);
+  }
+
+  componentWillUnmount() {
+    TerminalStore.unlisten(this.onChange);
+  }
+
+  onChange() {
+    this.setState(TerminalStore.getState());
   }
 
   render() {
