@@ -1,9 +1,10 @@
 import alt from '../alt'
+import Commands from '../shell/commands'
 
 class TerminalActions {
   execute(cmd) {
-    let result = ipcRenderer.sendSync("exec", cmd);
-    this.actions.addStdout(result.stdout);
+    let output = Commands.eval(cmd);
+    this.actions.addStdout(output.stdout);
     this.actions.addStdin();
   }
 

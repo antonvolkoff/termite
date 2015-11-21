@@ -44,11 +44,11 @@ app.on('ready', function() {
     exec(arg, function(error, stdout, stderr) {
         event.returnValue = {stdout: stdout, stderr: stderr, error: error};
 
-        console.log('stdout: ' + stdout);
-        console.log('stderr: ' + stderr);
-        if (error !== null) {
-           console.log('exec error: ' + error);
-        }
+        // console.log('stdout: ' + stdout);
+        // console.log('stderr: ' + stderr);
+        // if (error !== null) {
+        //    console.log('exec error: ' + error);
+        // }
     });
   });
 });
