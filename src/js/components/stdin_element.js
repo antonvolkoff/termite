@@ -1,4 +1,5 @@
-import React from 'react'
+import React            from 'react'
+import { findDOMNode }  from 'react-dom'
 
 import TerminalActions from '../actions/terminal_actions'
 
@@ -11,10 +12,14 @@ class StdinElement extends React.Component {
     this.handleKeyDown  = this.handleKeyDown.bind(this);
   }
 
+  componentDidMount() {
+    findDOMNode(this.refs[`stdin-${this.props.element.id}`]).focus();
+  }
+
   render() {
     return (
       <div className="element element-stdin">
-        <textarea value={this.state.value} onChange={this.handleChange} onKeyDown={this.handleKeyDown}></textarea>
+        <textarea value={this.state.value} onChange={this.handleChange} ref={`stdin-${this.props.element.id}`} onKeyDown={this.handleKeyDown} readOnly={this.props.element.readOnly}></textarea>
       </div>
     )
   }

@@ -8,8 +8,7 @@ class TerminalStore {
 
     this.id = 0;
     this.elements = [
-      {id: 0, type: 'stdin', value: ''},
-      // {id: 2, type: 'stdout', value: "README.md\nbuild\n"}
+      {id: 0, type: 'stdin', value: '', readOnly: false},
     ];
   }
 
@@ -21,10 +20,17 @@ class TerminalStore {
   }
 
   onAddStdin() {
+    // Mark current stdin as readonly
+    // this.elements[this.elements.length - 1].readOnly = true;
+    this.elements.forEach((elem) => {
+      elem.readOnly = true;
+    });
+
+    // Add new stdin
     let id = this.id + 1;
 
     this.id = id;
-    this.elements.push({id: id, type: 'stdin', value: ''});
+    this.elements.push({id: id, type: 'stdin', value: '', readOnly: false});
   }
 }
 
