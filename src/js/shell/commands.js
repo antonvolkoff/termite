@@ -1,9 +1,9 @@
 let exec = (cmd) => {
-  return ipcRenderer.sendSync("exec", cmd);
+  return ipcRenderer.sendSync("exec", `cd ${pcs.cwd()}; ${cmd}`);
 };
 
 let ls = (path = null) => {
-  let cmd = `cd ${pcs.cwd()}; ls`;
+  let cmd = "ls";
   if (path != null) {
     cmd += ` ${path}`;
   }
@@ -12,7 +12,7 @@ let ls = (path = null) => {
 }
 
 let pwd = () => {
-  return exec(`cd ${pcs.cwd()}; pwd`);
+  return exec(`pwd`);
 }
 
 let echo = (text) => {
@@ -23,6 +23,20 @@ let cd = (path) => {
   pcs.chdir(path);
   return {stdout: "", stderr: "", error: null};
 }
+
+/////// GIT
+
+let git = {
+  status: () => {
+    return exec("git status");
+  },
+
+  checkout: (branch) => {
+    return exec(`git checkout ${branch}`);
+  }
+}
+
+///////////
 
 class Commands {
   static eval(cmd) {

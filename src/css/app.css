@@ -12,10 +12,6 @@ body {
 }
 
 .element-stdin {
-  /*background: #303E4C;*/
-  /*background: #202A33;*/
-  /*background: #3D3347;*/
-
   border-left: 4px solid #3EDFBB;
 }
 
@@ -27,8 +23,6 @@ body {
   height: 20px;
 
   background: #202A33;
-  /*background: #303E4C;*/
-  /*background: #3D3347;*/
   color: #fafafa;
 
   font-family: 'Source Code Pro', monospace;
@@ -36,4 +30,6 @@ body {
 }
 
 .element-stdout {
+  border-left: 4px solid #666;
+  padding-left: 8px;
 }

@@ -10,6 +10,7 @@
     <div id="app"></div>
 
     <script type="text/javascript">
+      window.terminal = require('child_process').spawn('bash');
       window.pcs = process;
       window.ipcRenderer  = require('electron').ipcRenderer;
       require('./build/js/app.js');
