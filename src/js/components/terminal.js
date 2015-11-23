@@ -4,6 +4,7 @@ import TerminalStore    from '../stores/terminal_store'
 
 import StdinElement     from './stdin_element'
 import StdoutElement    from './stdout_element'
+import StatusBar        from './status_bar'
 
 class Terminal extends React.Component {
   constructor() {
@@ -43,6 +44,13 @@ class Terminal extends React.Component {
     return (
       <div className="terminal">
         {elements}
+        <StatusBar
+          hostname={this.state.hostname}
+          username={this.state.username}
+          currentPath={this.state.currentPath}
+          gitStatus={this.state.gitStatus}
+          branch={this.state.branch}
+        />
       </div>
     )
   }

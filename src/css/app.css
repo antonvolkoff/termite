@@ -53,3 +53,18 @@ body {
 .autocomplete .item.selected {
   background: #02BEFF;
 }
+
+.statusbar {
+  position: fixed;
+  background: #31333E;
+  /*height: 30px;*/
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 8px 0;
+}
+
+.statusbar .statusbar-section {
+  display: inline-block;
+  margin: 0 10px;
+}
