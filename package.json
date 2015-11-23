@@ -9,10 +9,11 @@
   "author": "Anton Volkov",
   "license": "MIT",
   "dependencies": {
+    "alt": "=0.17.8",
     "electron-prebuilt": "=0.35.1",
+    "fuzzaldrin": "^2.1.0",
     "react": "=0.14.3",
-    "react-dom": "=0.14.3",
-    "alt": "=0.17.8"
+    "react-dom": "=0.14.3"
   },
   "devDependencies": {
     "babel-core": "=6.2.1",

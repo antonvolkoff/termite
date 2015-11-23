@@ -1,7 +1,17 @@
 import React            from 'react'
 import { findDOMNode }  from 'react-dom'
+import { filter }       from 'fuzzaldrin'
 
-import TerminalActions from '../actions/terminal_actions'
+import TerminalActions  from '../actions/terminal_actions'
+import Autocomplete     from './autocomplete'
+
+let candidates = [
+  { name: 'ls()'    },
+  { name: 'pwd()'   },
+  { name: 'cd()'    },
+  { name: 'exec()'  },
+  { name: 'git.status()' },
+];
 
 class StdinElement extends React.Component {
   constructor(props) {
@@ -17,9 +27,15 @@ class StdinElement extends React.Component {
   }
 
   render() {
+    let autocomplete = null;
+    if (!this.props.element.readOnly && this.state.value.length > 0) {
+      autocomplete = <Autocomplete items={filter(candidates, this.state.value, {key: 'name'})} />
+    }
+
     return (
       <div className="element element-stdin">
         <textarea value={this.state.value} onChange={this.handleChange} ref={`stdin-${this.props.element.id}`} onKeyDown={this.handleKeyDown} readOnly={this.props.element.readOnly} rows="1"></textarea>
+        {autocomplete}
       </div>
     )
   }

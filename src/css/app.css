@@ -34,3 +34,9 @@ body {
   border-left: 4px solid #666;
   padding-left: 8px;
 }
+
+.autocomplete {
+  display: block;
+  position: absolute;
+  background: #444;
+}
