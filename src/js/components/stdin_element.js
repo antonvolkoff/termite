@@ -27,7 +27,8 @@ class StdinElement extends React.Component {
   }
 
   componentDidMount() {
-    findDOMNode(this.refs[`stdin-${this.props.element.id}`]).focus();
+    let node = findDOMNode(this.refs[`stdin-${this.props.element.id}`]);
+    node.focus();
   }
 
   render() {

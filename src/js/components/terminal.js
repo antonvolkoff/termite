@@ -17,6 +17,10 @@ class Terminal extends React.Component {
     TerminalStore.listen(this.onChange);
   }
 
+  componentDidUpdate() {
+    window.scroll(0, document.body.scrollHeight);
+  }
+
   componentWillUnmount() {
     TerminalStore.unlisten(this.onChange);
   }
