@@ -8,6 +8,10 @@ body {
   font-family: 'Source Code Pro', monospace;
 }
 
+.terminal {
+  margin-bottom: 70px;
+}
+
 .element {
   padding: 5px;
 }

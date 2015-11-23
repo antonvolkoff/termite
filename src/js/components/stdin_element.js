@@ -6,11 +6,11 @@ import TerminalActions  from '../actions/terminal_actions'
 import Autocomplete     from './autocomplete'
 
 let candidates = [
-  { id: 0, name: 'ls()'    },
-  { id: 1, name: 'pwd()'   },
-  { id: 2, name: 'cd()'    },
-  { id: 3, name: 'exec()'  },
-  { id: 4, name: 'git.status()' },
+  { id: 0, name: 'ls()', snippet: 'ls()' },
+  { id: 1, name: 'pwd()', snippet: 'pwd()' },
+  { id: 2, name: 'cd()', snippet: 'cd()' },
+  { id: 3, name: 'exec()', snippet: 'exec()' },
+  { id: 4, name: 'git.status()', snippet: 'git.status()' },
 ];
 
 class StdinElement extends React.Component {
@@ -92,7 +92,7 @@ class StdinElement extends React.Component {
     if (event.keyCode == 9) { // TAB
       event.preventDefault();
       let state = this.state;
-      state.value = state.selectedSuggestion.name;
+      state.value = state.selectedSuggestion.snippet;
       this.setState(state);
     }
   }

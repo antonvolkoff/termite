@@ -36,7 +36,11 @@ class Terminal extends React.Component {
       }
     });
 
-    return (<div>{elements}</div>)
+    return (
+      <div className="terminal">
+        {elements}
+      </div>
+    )
   }
 }
 
