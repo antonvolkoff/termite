@@ -1,47 +1,27 @@
-let exec = (cmd) => {
-  return ipcRenderer.sendSync("exec", `cd ${pcs.cwd()}; ${cmd}`);
-};
+function exec(cmd) {
+  return { stdin: cmd };
+}
 
-let ls = (path = null) => {
+function ls(path = null) {
   let cmd = "ls";
-  if (path != null) {
-    cmd += ` ${path}`;
-  }
-
+  if(path != null) cmd += ` ${path}`;
   return exec(cmd);
 }
 
-let pwd = () => {
-  return exec(`pwd`);
+function pwd() {
+  return exec("pwd");
 }
 
-let echo = (text) => {
-  return {stdout: text, stderr: "", error: null};
+function cd(path) {
+  return exec(`cd ${path}`);
 }
 
-let cd = (path) => {
-  pcs.chdir(path);
-  return {stdout: "", stderr: "", error: null};
-}
+export function run(code) {
+  let result = eval(code);
 
-/////// GIT
-
-let git = {
-  status: () => {
-    return exec("git status");
-  },
-
-  checkout: (branch) => {
-    return exec(`git checkout ${branch}`);
+  if (result.stdin) {
+    return result;
+  } else {
+    return { stdout: result };
   }
 }
-
-///////////
-
-class Commands {
-  static eval(cmd) {
-    return eval(cmd);
-  }
-}
-
-export default Commands

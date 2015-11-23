@@ -1,11 +1,21 @@
 import alt from '../alt'
-import Commands from '../shell/commands'
+import { run } from '../shell/commands'
 
 class TerminalActions {
   execute(cmd) {
-    terminal.stdin.write(`${cmd}\n`);
-    this.actions.addStdout("");
-    this.actions.addStdin();
+    let output = run(cmd);
+    if (output) {
+      terminal.stdin.write(`${output.stdin}\n`);
+      this.actions.addStdout();
+      this.actions.addStdin();
+    } else {
+      this.actions.addStdout();
+      this.actions.addStdin();
+    }
+
+    if (output.stdout) {
+      this.actions.writeToStdout(output.stdout);
+    }
   }
 
   addStdout() {
