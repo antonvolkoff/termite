@@ -3,13 +3,17 @@ import Commands from '../shell/commands'
 
 class TerminalActions {
   execute(cmd) {
-    let output = Commands.eval(cmd);
-    this.actions.addStdout(output.stdout);
+    terminal.stdin.write(`${cmd}\n`);
+    this.actions.addStdout("");
     this.actions.addStdin();
   }
 
-  addStdout(stdout) {
-    this.dispatch(stdout);
+  addStdout() {
+    this.dispatch();
+  }
+
+  writeToStdout(data) {
+    this.dispatch(data);
   }
 
   addStdin() {
@@ -17,4 +21,10 @@ class TerminalActions {
   }
 }
 
-export default alt.createActions(TerminalActions)
+let actions = alt.createActions(TerminalActions)
+
+terminal.stdout.on("data", (data) => {
+  actions.writeToStdout(data.toString());
+});
+
+export default actions

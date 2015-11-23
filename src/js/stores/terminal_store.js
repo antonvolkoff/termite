@@ -12,11 +12,16 @@ class TerminalStore {
     ];
   }
 
-  onAddStdout(stdout) {
+  onAddStdout() {
     let id = this.id + 1;
 
     this.id = id;
-    this.elements.push({id: id, type: 'stdout', value: stdout});
+    this.elements.push({id: id, type: 'stdout', value: ''});
+  }
+
+  onWriteToStdout(value) {
+    let stdout = this.elements[this.elements.length - 2];
+    stdout.value = stdout.value + value;
   }
 
   onAddStdin() {
