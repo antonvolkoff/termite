@@ -38,5 +38,14 @@ body {
 .autocomplete {
   display: block;
   position: absolute;
-  background: #444;
+  background: #31333E;
+  padding: 2px;
+}
+
+.autocomplete .item {
+  padding: 5px 10px;
+}
+
+.autocomplete .item.selected {
+  background: #02BEFF;
 }
