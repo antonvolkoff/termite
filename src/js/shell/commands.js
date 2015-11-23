@@ -16,6 +16,12 @@ function cd(path) {
   return exec(`cd ${path}`);
 }
 
+let git = {
+  status: function() {
+    return exec("git status");
+  }
+}
+
 export function run(code) {
   let result = eval(code);
 
