@@ -3,7 +3,7 @@ let exec = (cmd) => {
 };
 
 let ls = (path = null) => {
-  let cmd = "ls";
+  let cmd = `cd ${pcs.cwd()}; ls`;
   if (path != null) {
     cmd += ` ${path}`;
   }
@@ -12,7 +12,16 @@ let ls = (path = null) => {
 }
 
 let pwd = () => {
-  return exec("pwd");
+  return exec(`cd ${pcs.cwd()}; pwd`);
+}
+
+let echo = (text) => {
+  return {stdout: text, stderr: "", error: null};
+}
+
+let cd = (path) => {
+  pcs.chdir(path);
+  return {stdout: "", stderr: "", error: null};
 }
 
 class Commands {

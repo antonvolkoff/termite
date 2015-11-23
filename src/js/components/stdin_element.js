@@ -19,21 +19,26 @@ class StdinElement extends React.Component {
   render() {
     return (
       <div className="element element-stdin">
-        <textarea value={this.state.value} onChange={this.handleChange} ref={`stdin-${this.props.element.id}`} onKeyDown={this.handleKeyDown} readOnly={this.props.element.readOnly}></textarea>
+        <textarea value={this.state.value} onChange={this.handleChange} ref={`stdin-${this.props.element.id}`} onKeyDown={this.handleKeyDown} readOnly={this.props.element.readOnly} rows="1"></textarea>
       </div>
     )
   }
 
   handleChange(event) {
+    let value = event.target.value;
+    if (value[value.length - 1] == "\n") {
+      return
+    }
+
     let state = this.state;
-    state.value = event.target.value;
+    state.value = value;
     this.setState(state);
   }
 
   handleKeyDown(event) {
     if (event.keyCode == 13) {
-      TerminalActions.execute(this.state.value);
       event.preventDefault();
+      TerminalActions.execute(this.state.value);
     }
   }
 }

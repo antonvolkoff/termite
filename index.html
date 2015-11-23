@@ -10,7 +10,8 @@
     <div id="app"></div>
 
     <script type="text/javascript">
-      window.ipcRenderer = require('electron').ipcRenderer;
+      window.pcs = process;
+      window.ipcRenderer  = require('electron').ipcRenderer;
       require('./build/js/app.js');
     </script>
   </body>

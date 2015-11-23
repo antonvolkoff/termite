@@ -51,4 +51,8 @@ app.on('ready', function() {
         // }
     });
   });
+
+  ipcMain.on("chdir", function(event, arg) {
+    process.chdir(arg);
+  });
 });
