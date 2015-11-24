@@ -6,13 +6,13 @@ import TerminalActions  from '../actions/terminal_actions'
 import Autocomplete     from './autocomplete'
 
 let candidates = [
-  { id: 0, name: 'ls()', snippet: 'ls()' },
-  { id: 1, name: 'pwd()', snippet: 'pwd()' },
-  { id: 2, name: 'cd()', snippet: 'cd()' },
-  { id: 3, name: 'exec()', snippet: 'exec()' },
-  { id: 4, name: 'git.status()', snippet: 'git.status()' },
-  { id: 5, name: 'git.commit()', snippet: 'git.commit()' },
-  { id: 6, name: 'git.push()', snippet: 'git.push()' },
+  { id: 0, name: 'ls()',          snippet: 'ls()'         },
+  { id: 1, name: 'pwd()',         snippet: 'pwd()'        },
+  { id: 2, name: 'cd()',          snippet: 'cd()'         },
+  { id: 3, name: 'exec()',        snippet: 'exec()'       },
+  { id: 4, name: 'git.status()',  snippet: 'git.status()' },
+  { id: 5, name: 'git.commit()',  snippet: 'git.commit()' },
+  { id: 6, name: 'git.push()',    snippet: 'git.push()'   },
 ];
 
 class StdinElement extends React.Component {
