@@ -19,6 +19,15 @@ function cd(path) {
 let git = {
   status: function() {
     return exec("git status");
+  },
+
+  commit: function(opts = {}) {
+    let cmd = "git commit";
+
+    if (opts.all == true) cmd += " -a";
+    if (opts.message != undefined) cmd += ` -m "${opts.message}"`;
+
+    return exec(cmd);
   }
 }
 
