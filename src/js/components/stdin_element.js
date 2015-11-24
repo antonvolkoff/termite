@@ -12,6 +12,7 @@ let candidates = [
   { id: 3, name: 'exec()', snippet: 'exec()' },
   { id: 4, name: 'git.status()', snippet: 'git.status()' },
   { id: 5, name: 'git.commit()', snippet: 'git.commit()' },
+  { id: 6, name: 'git.push()', snippet: 'git.push()' },
 ];
 
 class StdinElement extends React.Component {

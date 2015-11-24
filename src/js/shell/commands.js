@@ -28,6 +28,14 @@ let git = {
     if (opts.message != undefined) cmd += ` -m "${opts.message}"`;
 
     return exec(cmd);
+  },
+
+  push: function(remote, branch, opts={}) {
+    let cmd = "git push";
+    if (opts.force == true) cmd += " -f";
+    cmd += ` ${remote} ${branch}`;
+
+    return exec(cmd);
   }
 }
 
