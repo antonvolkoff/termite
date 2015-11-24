@@ -5,7 +5,8 @@ class TerminalActions {
   execute(cmd) {
     let output = run(cmd);
     if (output) {
-      terminal.stdin.write(`${output.stdin}\n`);
+      let statusLine = 'echo "[*][*][*]{\\"currentPath\\": \\"$(pwd)\\", \\"username\\": \\"$USER\\", \\"hostname\\": \\"$(hostname)\\", \\"branch\\": \\"$(git rev-parse --abbrev-ref HEAD)\\", \\"status\\": \\"$(echo -n $(git status --porcelain))\\"}"';
+      this.actions.writeToTerm(`${output.stdin};${statusLine}\n`);
       this.actions.addStdout();
       this.actions.addStdin();
     } else {
@@ -16,6 +17,10 @@ class TerminalActions {
     if (output.stdout) {
       this.actions.writeToStdout(output.stdout);
     }
+  }
+
+  writeToTerm(params) {
+    this.dispatch(params);
   }
 
   addStdout() {
@@ -29,12 +34,10 @@ class TerminalActions {
   addStdin() {
     this.dispatch();
   }
+
+  update(params) {
+    this.dispatch(params);
+  }
 }
 
-let actions = alt.createActions(TerminalActions)
-
-terminal.stdout.on("data", (data) => {
-  actions.writeToStdout(data.toString());
-});
-
-export default actions
+export default alt.createActions(TerminalActions)

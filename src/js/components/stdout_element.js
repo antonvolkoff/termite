@@ -2,8 +2,10 @@ import React from 'react'
 
 class StdoutElement extends React.Component {
   render() {
+    let i = 0;
     let lines = this.props.element.value.split("\n").map((line) => {
-      return <div>{line}</div>
+      i += 1;
+      return <div key={i}>{line}</div>
     });
 
     return (

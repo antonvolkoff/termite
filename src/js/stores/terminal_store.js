@@ -2,6 +2,19 @@ import alt from '../alt'
 
 import TerminalActions from '../actions/terminal_actions'
 
+let mainTerminal = child_process.spawn('bash');
+let subTerminal  = child_process.spawn('bash');
+
+mainTerminal.stdout.on('data', (data) => {
+  let str = data.toString();
+
+  if (str.startsWith("[*][*][*]")) {
+    TerminalActions.update(JSON.parse(str.substr(9, str.length - 1)));
+  } else {
+    TerminalActions.writeToStdout(str);
+  }
+});
+
 class TerminalStore {
   constructor() {
     this.bindActions(TerminalActions);
@@ -15,6 +28,10 @@ class TerminalStore {
     this.branch       = "git branch";
     this.currentPath  = "/current/path";
     this.gitStatus    = "git status";
+  }
+
+  onWriteToTerm(data) {
+    mainTerminal.stdin.write(data);
   }
 
   onAddStdout() {
@@ -41,6 +58,14 @@ class TerminalStore {
 
     this.id = id;
     this.elements.push({id: id, type: 'stdin', value: '', readOnly: false});
+  }
+
+  onUpdate(params) {
+    this.currentPath = params.currentPath;
+    this.username    = params.username;
+    this.hostname    = params.hostname;
+    this.branch      = params.branch;
+    this.gitStatus   = params.status.length > 0 ? true : false
   }
 }
 

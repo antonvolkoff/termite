@@ -1,7 +1,12 @@
 import React from 'react'
 
-class StatusBar {
+class StatusBar extends React.Component {
   render() {
+    let status = "NO";
+    if (this.props.gitStatus) {
+      status = "YES";
+    }
+
     return (
       <footer className="statusbar">
         <section className="statusbar-section">
@@ -13,7 +18,7 @@ class StatusBar {
         </section>
 
         <section className="statusbar-section">
-          {this.props.gitStatus}
+          {status}
         </section>
 
         <section className="statusbar-section">
