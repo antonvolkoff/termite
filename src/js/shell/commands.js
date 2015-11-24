@@ -36,6 +36,11 @@ let git = {
     cmd += ` ${remote} ${branch}`;
 
     return exec(cmd);
+  },
+
+  checkout: function(branch) {
+    let cmd = `git checkout ${branch}`;
+    return exec(cmd);
   }
 }
 
