@@ -2,9 +2,9 @@ import React from 'react'
 
 class StatusBar extends React.Component {
   render() {
-    let status = "NO";
+    let branchStyle = {color: 'green'};
     if (this.props.gitStatus) {
-      status = "YES";
+      branchStyle = {color: 'yellow'};
     }
 
     return (
@@ -17,11 +17,7 @@ class StatusBar extends React.Component {
           {this.props.currentPath}
         </section>
 
-        <section className="statusbar-section">
-          {status}
-        </section>
-
-        <section className="statusbar-section">
+        <section className="statusbar-section" style={branchStyle}>
           {this.props.branch}
         </section>
       </footer>

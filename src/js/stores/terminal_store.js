@@ -23,11 +23,11 @@ class TerminalStore {
     this.elements = [
       {id: 0, type: 'stdin', value: '', readOnly: false},
     ];
-    this.hostname     = "hostname";
-    this.username     = "username";
-    this.branch       = "git branch";
-    this.currentPath  = "/current/path";
-    this.gitStatus    = "git status";
+    this.hostname     = "";
+    this.username     = "";
+    this.branch       = "";
+    this.currentPath  = "";
+    this.gitStatus    = "";
   }
 
   onWriteToTerm(data) {
