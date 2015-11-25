@@ -1,16 +1,16 @@
 import React from 'react'
+import { findDOMNode }  from 'react-dom'
 
 class StdoutElement extends React.Component {
-  render() {
-    let i = 0;
-    let lines = this.props.element.value.split("\n").map((line) => {
-      i += 1;
-      return <div key={i}>{line}</div>
-    });
+  componentDidUpdate() {
+    let node = findDOMNode(this.refs.output);
+    node.style.height = (node.scrollHeight)+"px";
+  }
 
+  render() {
     return (
       <div className="element element-stdout">
-        {lines}
+        <textarea ref="output" value={this.props.element.value} readOnly={true}></textarea>
       </div>
     )
   }

@@ -1,3 +1,4 @@
+
 body {
   margin: 0;
   padding: 0;
@@ -37,6 +38,20 @@ body {
 .element-stdout {
   border-left: 4px solid #666;
   padding-left: 8px;
+}
+
+.element-stdout textarea {
+  border: none;
+  outline: none;
+  width: 100%;
+  resize: none;
+  height: auto;
+
+  background: #202A33;
+  color: #fafafa;
+  
+  font-family: 'Source Code Pro', monospace;
+  font-size: inherit;
 }
 
 .autocomplete {
